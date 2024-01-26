@@ -31,11 +31,6 @@ void pulse19()
     //std::cout << "Pulse Done ! DigitalRead :" << digitalRead(19)<< endl;
 }
 
-void MyExit()
-{
- RunThread=false;
- cout << "exit! " << endl;
-}
 
 void my_ctrl_c_handler(int s){
            printf("Caught signal %d\n",s);
@@ -49,7 +44,6 @@ void my_ctrl_c_handler(int s){
 int main(void)
 {
  thread thread1;
- std::atexit(MyExit);
  signal (SIGINT,my_ctrl_c_handler);
 
 
@@ -99,8 +93,8 @@ for(int i=0;i<ds18b20.ScanCount;i++)
  // pulse  gpio19
  pinMode(19,OUTPUT);
  thread1=thread(pulse19);
-
  thread1.join();
+ release_gpiod();
 
 }
 
