@@ -4,7 +4,7 @@ It uses  simple functions.
 
 - bool pinMode(int pin,int  mode);<br>
   Select what you want to do with the GPIO<br>
-  OUTPUT, INPUT=1, INPUT_PULLUP, INPUT_PULLDOWN, OPENDRAIN_PULLUP.<br>
+  OUTPUT, INPUT, INPUT_PULLUP, INPUT_PULLDOWN, OPENDRAIN_PULLUP.<br>
   return true if it works. False is the Pin was already exported somewhere else.<br>
 
 - void digitalWrite(int pin,int  output);<br>
