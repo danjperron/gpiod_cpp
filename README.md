@@ -5,13 +5,13 @@ It uses  simple functions.
 - bool pinMode(int pin,int  mode);<br>
   Select what you want to do with the GPIO<br>
   OUTPUT, INPUT, INPUT_PULLUP, INPUT_PULLDOWN, OPENDRAIN_PULLUP.<br>
-  return true if it works. False is the Pin was already exported somewhere else.<br>
+  Return true if it works. False is the Pin was already exported somewhere else.<br>
 
 - void digitalWrite(int pin,int  output);<br>
-  write digital value to gpio.
+  Write digital value to gpio.
 
 - int digitalRead(int pin);<br>
-  read digital value of the gpio.
+  Read digital value of the gpio.
 
 - void release_gpiod();<br>
   When you done just release
