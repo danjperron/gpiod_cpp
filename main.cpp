@@ -75,6 +75,9 @@ BB_DS18B20 ds18b20(gpioline[sensor]);
 
 ds18b20.ScanForSensor();
 cout << "ScanCount :" << ds18b20.ScanCount <<endl;
+cout << "start conversion" << endl;
+ds18b20.GlobalStartConversion();
+
 
 for(int i=0;i<ds18b20.ScanCount;i++)
 {
