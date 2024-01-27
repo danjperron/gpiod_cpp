@@ -19,16 +19,16 @@ void convertLittleToBig(const uint8_t* in, uint8_t* out, int sizeInBytes) {
 }
 
 
-void pulse19()
+void pulse(int Pin)
 {
     while(RunThread)
     {
-      digitalWrite(19, digitalRead(19) ? 0 : 1);
-      std::cout << "DigitalRead" << digitalRead(19) << endl;
+      digitalWrite(Pin, digitalRead(Pin) ? 0 : 1);
+      std::cout << "DigitalRead" << digitalRead(Pin) << endl;
       usleep(1000000);
     }
-    digitalWrite(19,0);
-    //std::cout << "Pulse Done ! DigitalRead :" << digitalRead(19)<< endl;
+    digitalWrite(Pin,0);
+    //std::cout << "Pulse Done ! DigitalRead :" << digitalRead(26)<< endl;
 }
 
 
@@ -49,19 +49,19 @@ int main(void)
 
 
  // TEST GPIO
- cout << " test GPIO Pin 19 and 26 " << endl;
+ cout << " test GPIO Pin 26 and 26 " << endl;
  cout << "set Pin26: " << pinMode(26,OUTPUT) << endl;
  digitalWrite(26,1);
  cout << "read 26 :out =1 => " << digitalRead(26) << endl;
  digitalWrite(26,0);
  cout << "read 26 :out =0 => " << digitalRead(26) << endl;
- cout << "set input 19 pull down:" << pinMode(19,INPUT_PULLDOWN) <<endl;
- cout << "read 19 in " << digitalRead(19) << endl;
+ cout << "set input 26 pull down:" << pinMode(26,INPUT_PULLDOWN) <<endl;
+ cout << "read 26 in " << digitalRead(26) << endl;
  cout << "set input 26:" << pinMode(26,INPUT) <<endl;
  cout << "read 26 in " << digitalRead(26) << endl;
- cout << "set input pullup 19:" << pinMode(19,INPUT_PULLUP) <<endl;
+ cout << "set input pullup 26:" << pinMode(26,INPUT_PULLUP) <<endl;
  usleep(100000);
- cout << "read 19 in " << digitalRead(19) << endl;
+ cout << "read 26 in " << digitalRead(26) << endl;
 
 for(auto sensor: {4,17})
 {
@@ -92,11 +92,14 @@ for(int i=0;i<ds18b20.ScanCount;i++)
 }
 }
 
- cout <<  endl <<  "pulse GPIO 19. Press ctr-l to end! " << endl;
- // pulse  gpio19
- pinMode(19,OUTPUT);
- thread1=thread(pulse19);
+ int PulsePin=19;
+ cout <<  endl <<  "pulse GPIO " << PulsePin << ", Press ctr-l to end! " << endl;
+ // pulse  gpio26
+ pinMode(PulsePin,OUTPUT);
+ thread1=thread(pulse,PulsePin);
  thread1.join();
+ // what will be the status of the pin at the end
+ digitalWrite(PulsePin,1);
  release_gpiod();
 
 }
