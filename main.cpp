@@ -24,7 +24,7 @@ void pulse19()
     while(RunThread)
     {
       digitalWrite(19, digitalRead(19) ? 0 : 1);
-      //std::cout << "DigitalRead" << digitalRead(19) << endl;
+      std::cout << "DigitalRead" << digitalRead(19) << endl;
       usleep(1000000);
     }
     digitalWrite(19,0);
