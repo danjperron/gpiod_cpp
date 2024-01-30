@@ -9,7 +9,7 @@ OBJS := $(patsubst %.cpp,%.o,$(SRCS))
 
 all: $(TARGET)
 $(TARGET): $(OBJS)
-	$(CC) -o $@ $^  -lgpiod
+	$(CC) -o $@ $^  -lgpiod -lpthread
 %.o: %.cpp
 	$(CC) $(CFLAGS) -c $<
 clean:
